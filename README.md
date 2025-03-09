@@ -94,7 +94,7 @@ To add new builds to batch build script, write make command as described above.
 
 
 
-# LICENSE
+# License
 
 Copyright (c) 2025, silvio3105 (www.github.com/silvio3105)
 
