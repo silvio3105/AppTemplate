@@ -38,9 +38,6 @@
 // ----- MACRO FUNCTIONS
 
 
-// ----- NAMESPACES
-
-
 // ----- ENUMS
 
 
@@ -53,10 +50,13 @@
 // ----- CLASSES
 
 
-// ----- EXTERNS
+// ----- NAMESPACES
 
 
 // ----- FUNCTION DECLARATIONS
+
+
+// ----- EXTERNS
 
 
 
