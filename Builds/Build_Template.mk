@@ -1,3 +1,4 @@
+
 # BUILD NAME
 BUILD_NAME = Build_Template
 
@@ -126,6 +127,13 @@ include Config/AppConfig.mk
 ######################################
 
 include $(DIR_HARDWARE)/$(HW_NAME).mk
+
+
+######################################
+# MCU MAKE
+######################################
+
+include $(DIR_MCU)/$(MCU_NAME).mk
 
 
 ######################################

@@ -38,20 +38,23 @@ This repo contains a template application projects(bootloader/firmware). Templat
     - 📂 **Documentation**: Folder with application documentation generated with Doxygen and files used for documentation.
     - 📂 **Drivers**: Folder with driver source files.
         - 📂 **Inc**: Folder with driver header files.
-    - 📂 **Hardware**: Folder with application-related hardware config header files and MCU SDK files.
-        - 📂 **{HW_name}**: Folder with MCU files.
-            - 📂 **Inc**: Folder with MCU SDK header files.
-            - 📂 **Linker**: Folder with MCU linker script files. 
-            - 📂 **Src**: Folder with MCU SDK source files. 
-            - 📂 **Startup**: Folder with MCU startup files.
-            - 📂 **SVD**: Folder with MCU system view description file. 
+    - 📂 **Hardware**: Folder with application-related hardware config header files.
+        - 📂 **{HW_name}**: Folder with hardware files.
             - {HW_name}.mk: Make file for this hardware build.
-            - {HW_name}.hpp: Header file with hardware build config.
+            - {HW_name}.hpp: Header file with hardware config.
     - 📂 **Libraries**: Folder with library source files.
         - 📂 **Inc**: Folder with library header files.
     - 📂 **Make**: Folder with Make files.
         - Backend.mk: File with build process and Make actions, shared across all builds.
         - Config.mk: File with Make config, shared across all builds.
+    - 📂 **MCU**: Folder with MCU-related files.
+        -  📂 **{MCU_name}**: Folder with MCU files.
+            - 📂 **Inc**: Folder with MCU SDK header files.
+            - 📂 **Linker**: Folder with MCU linker script files. 
+            - 📂 **Src**: Folder with MCU SDK source files. 
+            - 📂 **Startup**: Folder with MCU startup files.
+            - 📂 **SVD**: Folder with MCU system view description file.
+            - {MCU_name}.mk: Make file with MCU config.
     - 📂 **Modules**: Folder with application modules source files.
         - 📂 **Inc**: Folder with application modules header files.
     - 📂 **RTOS**: Folder with RTOS-related files.
