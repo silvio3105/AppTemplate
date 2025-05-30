@@ -47,7 +47,7 @@ This repo contains a template application projects(bootloader/firmware). Templat
     - 📂 **Make**: Folder with Make files.
         - Backend.mk: File with build process and Make actions, shared across all builds.
         - Config.mk: File with Make config, shared across all builds.
-    - 📂 **MCU**: Folder with MCU-related files.
+    - 📂 **MCU**: Folder with MCU-related files and configs.
         -  📂 **{MCU_name}**: Folder with MCU files.
             - 📂 **Inc**: Folder with MCU SDK header files.
             - 📂 **Linker**: Folder with MCU linker script files. 
