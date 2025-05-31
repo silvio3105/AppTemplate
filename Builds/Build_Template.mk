@@ -71,6 +71,27 @@ EXCEPTIONS = 0
 # SET TO 1 TO USE DEFAULT LIB
 DEF_LIB = 0
 
+# SPECS
+SPECS = nano.specs
+
+
+######################################
+# RTOS CONFIG
+######################################
+
+# RTOS SYSTEM FILE NAME
+RTOS_SYS = stm32f103xb.h
+
+# RTOS IRQ FILE NAME
+RTOS_IRQ = irq_armv7m.s
+
+# RTOS NAME
+RTOS_NAME = RTX
+
+# RTOS CONFIG FILE
+RTOS_CFG = RTOS/RTX/Inc/RTX_Config.h
+
+
 
 ######################################
 # BUILD FILES, INCLUDES OR DEFINES
@@ -93,6 +114,41 @@ BUILD_DEFINES = \
 
 
 ######################################
+# RTOS STUFF
+######################################
+
+ifeq ($(APP_RTOS), 1)
+BUILD_CPP_FILES += \
+
+BUILD_C_FILES += \
+$(DIR_RTOS)/RTX_Config.c \
+$(DIR_RTOS)/os_systick.c \
+$(DIR_RTOS)/rtx_delay.c \
+$(DIR_RTOS)/rtx_evflags.c \
+$(DIR_RTOS)/rtx_evr.c \
+$(DIR_RTOS)/rtx_kernel.c \
+$(DIR_RTOS)/rtx_memory.c \
+$(DIR_RTOS)/rtx_mempool.c \
+$(DIR_RTOS)/rtx_msgqueue.c \
+$(DIR_RTOS)/rtx_mutex.c \
+$(DIR_RTOS)/rtx_semaphore.c \
+$(DIR_RTOS)/rtx_system.c \
+$(DIR_RTOS)/rtx_thread.c \
+$(DIR_RTOS)/rtx_timer.c \
+$(DIR_RTOS)/rtx_lib.c
+
+BUILD_ASM_FILES += \
+$(DIR_RTOS)/IRQ/$(RTOS_IRQ)
+
+BUILD_INCLUDE_PATHS += \
+-I$(DIR_RTOS)/Inc
+
+BUILD_DEFINES += \
+-DCMSIS_device_header=\"$(RTOS_SYS)\"
+endif
+
+
+######################################
 # J-LINK-RELATED CONFIG
 ######################################
 
@@ -101,11 +157,6 @@ JLINK_RTT_UP = 512
 
 # J-LINK RTT UP BUFFER SIZE (32-bit aligned, 0 to use default)
 JLINK_RTT_DOWN = 0
-
-
-######################################
-# CONFIGURE APPLICATION OR HARDWARE MAKE
-######################################
 
 
 ######################################
@@ -134,12 +185,6 @@ include $(DIR_HARDWARE)/$(HW_NAME).mk
 ######################################
 
 include $(DIR_MCU)/$(MCU_NAME).mk
-
-
-######################################
-# RECONFIGURE APPLICATION OR HARDWARE MAKE
-######################################
-
 
 
 ############################################################################

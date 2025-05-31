@@ -24,5 +24,72 @@ MCU_ARCH = armv7-m
 # SET TO 1 TO USE BIG ENDIAN
 MCU_BIG_ENDIAN = 0
 
-# MCU FLOAT ABI (leave empty for no float ABI instruction ; "soft" software floating-point ; "softfp" hardware floating-point but software conversions ; "hard" hardware floating-point)
+# MCU FLOAT ABI ("soft" software floating-point ; "softfp" hardware floating-point but software conversions ; "hard" hardware floating-point)
 MCU_FLOAT = soft
+
+
+######################################
+# J-LINK CONFIG
+######################################
+
+# RTOS SYSTEM FILE
+JLINK_DEVICE = STM32F103C8
+
+# J-LINK START ADDRESS FOR FLASH PROCESS
+JLINK_ADDR_START = 0x08000000
+
+# J-LINK END ADDRESS FOR APP ERASE OPERATION
+JLINK_ADDR_END = 0x08001000
+
+# J-LINK INTERFACE SPEED IN kHz
+JLINK_SPEED = 4000
+
+# J-LINK INTERFACE
+JLINK_IF = SWD
+
+
+######################################
+# MCU-RELATED FILE LIST
+######################################
+
+# C++ TRANSLATION FILES
+MCU_CPP_FILES = \
+
+# C TRANSLATION FILES
+MCU_C_FILES = \
+$(DIR_MCU)/Src/system_stm32f1xx.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_gpio_ex.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_tim.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_tim_ex.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_uart.c \
+$(DIR_MCU)/Src/stm32f1xx_hal.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_rcc.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_rcc_ex.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_gpio.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_dma.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_cortex.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_pwr.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_flash.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_flash_ex.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_exti.c \
+$(DIR_MCU)/Src/stm32f1xx_hal_i2c.c \
+$(DIR_MCU)/Src/stm32f1xx_it.c \
+
+# ASSEMBLER TRANSLATION FILES
+MCU_ASM_FILES = \
+
+
+######################################
+# MCU-RELATED INCLUDE PATHS
+######################################
+
+# INCLUDE DIRECTORIES
+MCU_INCLUDE_PATHS = \
+
+
+######################################
+# MCU-RELATED DEFINES
+######################################
+
+# MCU DEFINES
+MCU_DEFINES = \

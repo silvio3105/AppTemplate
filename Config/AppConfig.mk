@@ -21,12 +21,6 @@ APP_ASM_FILES = \
 ######################################
 
 APP_INCLUDE_PATHS = \
--IApplication/Inc \
--ICMSIS \
--IConfig \
--IDrivers/Inc \
--ILibraries/Inc \
--IModules/Inc
 
 
 ######################################
@@ -34,4 +28,3 @@ APP_INCLUDE_PATHS = \
 ######################################
 
 APP_DEFINES = \
-

@@ -7,27 +7,39 @@
 CPP_FILES = \
 $(BUILD_CPP_FILES) \
 $(HW_CPP_FILES) \
+$(MCU_CPP_FILES) \
 $(APP_CPP_FILES)
 
 # C TRANSLATION FILES
 C_FILES = \
 $(BUILD_C_FILES) \
 $(HW_C_FILES) \
+$(MCU_C_FILES) \
 $(APP_C_FILES)
 
 # ASSEMBLER TRANSLATION FILES
 ASM_FILES = \
 $(BUILD_ASM_FILES) \
 $(HW_ASM_FILES) \
+$(MCU_ASM_FILES) \
 $(APP_ASM_FILES) \
-$(DIR_STARTUP)/$(MCU_STARTUP) \
+$(DIR_STARTUP)/$(MCU_STARTUP)
 
 # INCLUDE DIRECTORIES
 INCLUDE_PATHS = \
 $(BUILD_INCLUDE_FILES) \
 $(HW_INCLUDE_PATHS) \
+$(MCU_INCLUDE_PATHS) \
 $(APP_INCLUDE_PATHS) \
--I$(DIR_HARDWARE)
+-I$(DIR_HARDWARE) \
+-I$(DIR_MCU) \
+-I$(DIR_MCU)/Inc \
+-IApplication/Inc \
+-ICMSIS \
+-IConfig \
+-IDrivers/Inc \
+-ILibraries/Inc \
+-IModules/Inc
 
 # DEFINES
 DEFINES = \
@@ -36,6 +48,7 @@ DEFINES = \
 -D$(MCU_DEFINE) \
 $(BUILD_DEFINES) \
 $(HW_DEFINES) \
+$(MCU_DEFINE) \
 $(APP_DEFINES)
 
 
@@ -159,7 +172,7 @@ endif
 # LINKER FLAGS
 #######################################
 
-LINKER_FLAGS = $(CAL_FLAGS) -specs=nano.specs -T$(DIR_LINKER)/$(MCU_LINKER) -L$(DIR_LINKER) -lc -lm -lnosys -Wl,-Map=$(DIR_BUILD)/$(BUILD_NAME).map,--cref,--gc-sections,--print-memory-usage,--fuse-ld=gold
+LINKER_FLAGS = $(CAL_FLAGS) -specs=$(SPECS) -T$(DIR_LINKER)/$(MCU_LINKER) -L$(DIR_LINKER) -lc -lm -lnosys -Wl,-Map=$(DIR_BUILD)/$(BUILD_NAME).map,--cref,--gc-sections,--print-memory-usage,--fuse-ld=gold
 
 
 #######################################
@@ -215,7 +228,7 @@ $(DIR_BUILD):
 
 flash: all
 	if not exist $(JLINK_FLASH) ((echo r & echo h & echo loadbin $(DIR_BUILD)/$(BUILD_NAME).bin,$(JLINK_ADDR_START) & echo verifybin $(DIR_BUILD)/$(BUILD_NAME).bin,$(JLINK_ADDR_START) & echo r & echo q) > $(JLINK_FLASH))
-	JLink.exe -device $(JLINK_DEVICE) -if SWD -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_FLASH)
+	JLink.exe -device $(JLINK_DEVICE) -if $(JLINK_IF) -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_FLASH)
 	
 
 #######################################
@@ -224,7 +237,7 @@ flash: all
 
 erase:
 	if not exist $(JLINK_ERASE) ((echo r & echo h & echo erase $(JLINK_ADDR_START) $(JLINK_ADDR_END) & echo r & echo q) > $(JLINK_ERASE))
-	JLink.exe -device $(JLINK_DEVICE) -if SWD -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_ERASE)
+	JLink.exe -device $(JLINK_DEVICE) -if $(JLINK_IF) -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_ERASE)
 
 
 #######################################
@@ -233,7 +246,7 @@ erase:
 
 erase_all:
 	if not exist $(JLINK_ERASE_ALL) ((echo r & echo h & echo erase & echo r & echo q) > $(JLINK_ERASE_ALL))
-	JLink.exe -device $(JLINK_DEVICE) -if SWD -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_ERASE_ALL)
+	JLink.exe -device $(JLINK_DEVICE) -if $(JLINK_IF) -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_ERASE_ALL)
 
 
 #######################################
@@ -242,7 +255,7 @@ erase_all:
 
 reset:
 	if not exist $(JLINK_RESET) ((echo r & echo q) > $(JLINK_RESET))
-	JLink.exe -device $(JLINK_DEVICE) -if SWD -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_RESET)
+	JLink.exe -device $(JLINK_DEVICE) -if $(JLINK_IF) -speed $(JLINK_SPEED) -autoconnect 1 -CommandFile $(JLINK_RESET)
 	
 
 #######################################
@@ -250,16 +263,16 @@ reset:
 #######################################
 
 clean: clean_jlink
-	if exist $(DIR_BUILD) (echo Deleting build directory & rmdir /s /q $(DIR_BUILD))
-	if exist $(DIR_OUTPUT).bin (echo Deleting bin executable & del $(DIR_OUTPUT).bin)
-	if exist $(DIR_OUTPUT).hex (echo Deleting hex executable & del $(DIR_OUTPUT).hex)
-	if exist $(DIR_OUTPUT).map (echo Deleting build map file & del $(DIR_OUTPUT).map)
+	if exist $(DIR_BUILD) (rmdir /s /q $(DIR_BUILD))
+	if exist $(DIR_OUTPUT).bin (del $(DIR_OUTPUT).bin)
+	if exist $(DIR_OUTPUT).hex (del $(DIR_OUTPUT).hex)
+	if exist $(DIR_OUTPUT).map (del $(DIR_OUTPUT).map)
 
 clean_jlink:
-	if exist $(JLINK_FLASH) (echo Deleting flash script & del $(JLINK_FLASH))
-	if exist $(JLINK_ERASE) (echo Deleting erase script & del $(JLINK_ERASE))
-	if exist $(JLINK_ERASE_ALL) (echo Deleting erase ALL script & del $(JLINK_ERASE_ALL))
-	if exist $(JLINK_RESET) (echo Deleting reset script & del $(JLINK_RESET))	
+	if exist $(JLINK_FLASH) (del $(JLINK_FLASH))
+	if exist $(JLINK_ERASE) (del $(JLINK_ERASE))
+	if exist $(JLINK_ERASE_ALL) (del $(JLINK_ERASE_ALL))
+	if exist $(JLINK_RESET) (del $(JLINK_RESET))	
 
 
 #######################################
