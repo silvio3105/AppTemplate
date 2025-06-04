@@ -107,9 +107,16 @@ BUILD_ASM_FILES = \
 
 # INCLUDE DIRECTORIES
 BUILD_INCLUDE_PATHS = \
+-IApplication/Inc \
+-ICMSIS \
+-IConfig \
+-IDrivers/Inc \
+-ILibraries/Inc \
+-IModules/Inc \
 
 # DEFINES
 BUILD_DEFINES = \
+-DBUILD_$(BUILD_NAME) \
 
 
 ######################################

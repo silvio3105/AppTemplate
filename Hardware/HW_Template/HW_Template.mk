@@ -23,6 +23,7 @@ HW_ASM_FILES = \
 
 # INCLUDE DIRECTORIES
 HW_INCLUDE_PATHS = \
+-I$(DIR_HARDWARE) \
 
 
 ######################################
@@ -31,3 +32,4 @@ HW_INCLUDE_PATHS = \
 
 # HARDWARE DEFINES
 HW_DEFINES = \
+-DHW_$(HW_NAME) \

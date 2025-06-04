@@ -73,6 +73,7 @@ $(DIR_MCU)/Src/stm32f1xx_hal_i2c.c \
 
 # ASSEMBLER TRANSLATION FILES
 MCU_ASM_FILES = \
+$(DIR_STARTUP)/$(MCU_STARTUP)
 
 
 ######################################
@@ -81,6 +82,8 @@ MCU_ASM_FILES = \
 
 # INCLUDE DIRECTORIES
 MCU_INCLUDE_PATHS = \
+-I$(DIR_MCU) \
+-I$(DIR_MCU)/Inc \
 -I$(DIR_MCU)/Inc/Legacy
 
 
@@ -90,3 +93,4 @@ MCU_INCLUDE_PATHS = \
 
 # MCU DEFINES
 MCU_DEFINES = \
+-D$(MCU_DEFINE) \
