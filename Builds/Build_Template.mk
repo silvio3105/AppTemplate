@@ -89,8 +89,7 @@ RTOS_IRQ = irq_armv7m.s
 RTOS_NAME = RTX
 
 # RTOS CONFIG FILE
-RTOS_CFG = RTOS/RTX/Inc/RTX_Config.h
-
+RTOS_CFG = $(DIR_RTOS)/Inc/RTX_Config.h
 
 
 ######################################
@@ -184,7 +183,7 @@ include $(DIR_HARDWARE)/$(HW_NAME).mk
 # MCU MAKE
 ######################################
 
-include $(DIR_MCU)/$(MCU_NAME).mk
+include $(DIR_MCU)/$(HW_MCU).mk
 
 
 ############################################################################

@@ -3,9 +3,6 @@
 # MCU-RELATED CONFIG
 ######################################
 
-# MCU NAME
-MCU_NAME = MCU_NAME
-
 # COMPILER DEFINES FOR MCU
 MCU_DEFINE = STM32F103xB
 
@@ -73,7 +70,6 @@ $(DIR_MCU)/Src/stm32f1xx_hal_flash.c \
 $(DIR_MCU)/Src/stm32f1xx_hal_flash_ex.c \
 $(DIR_MCU)/Src/stm32f1xx_hal_exti.c \
 $(DIR_MCU)/Src/stm32f1xx_hal_i2c.c \
-$(DIR_MCU)/Src/stm32f1xx_it.c \
 
 # ASSEMBLER TRANSLATION FILES
 MCU_ASM_FILES = \
@@ -85,6 +81,7 @@ MCU_ASM_FILES = \
 
 # INCLUDE DIRECTORIES
 MCU_INCLUDE_PATHS = \
+-I$(DIR_MCU)/Inc/Legacy
 
 
 ######################################

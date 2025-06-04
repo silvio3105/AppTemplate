@@ -1,6 +1,6 @@
 
 # HARDWARE MCU
-MCU_NAME = MCU_NAME
+HW_MCU = MCU_NAME
 
 
 ######################################
