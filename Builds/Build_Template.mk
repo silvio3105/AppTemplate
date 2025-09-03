@@ -22,7 +22,7 @@ DEBUG_BUFFER_SIZE = 128
 # MODULE DEBUG LEVELS
 DEBUG_ENABLE = \
 
-# LOCAL DEBUG LEVELS
+# MODULE DEBUG LEVELS
 DEBUG_LEVEL = \
 
 # GLOBAL DEBUG LEVELS (SET TO 1 TO ENABLE)
@@ -80,10 +80,10 @@ SPECS = nano.specs
 ######################################
 
 # RTOS SYSTEM FILE NAME
-RTOS_SYS = stm32f103xb.h
+RTOS_SYS = $(MCU_SYS)
 
 # RTOS IRQ FILE NAME
-RTOS_IRQ = irq_armv7m.s
+RTOS_IRQ = $(MCU_IRQ)
 
 # RTOS NAME
 RTOS_NAME = RTX
@@ -107,16 +107,9 @@ BUILD_ASM_FILES = \
 
 # INCLUDE DIRECTORIES
 BUILD_INCLUDE_PATHS = \
--IApplication/Inc \
--ICMSIS \
--IConfig \
--IDrivers/Inc \
--ILibraries/Inc \
--IModules/Inc \
 
 # DEFINES
 BUILD_DEFINES = \
--DBUILD_$(BUILD_NAME) \
 
 
 ######################################
@@ -190,7 +183,7 @@ include $(DIR_HARDWARE)/$(HW_NAME).mk
 # MCU MAKE
 ######################################
 
-include $(DIR_MCU)/$(HW_MCU).mk
+include $(HW_MCU_MAKE)
 
 
 ############################################################################

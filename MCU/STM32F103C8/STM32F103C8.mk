@@ -24,6 +24,12 @@ MCU_BIG_ENDIAN = 0
 # MCU FLOAT ABI ("soft" software floating-point ; "softfp" hardware floating-point but software conversions ; "hard" hardware floating-point)
 MCU_FLOAT = soft
 
+# MCU SYSTEM FILE NAME
+MCU_SYS = stm32f103xb.h
+
+# MCU IRQ FILE NAME
+MCU_IRQ = irq_armv7m.s
+
 
 ######################################
 # J-LINK CONFIG
@@ -73,7 +79,6 @@ $(DIR_MCU)/Src/stm32f1xx_hal_i2c.c \
 
 # ASSEMBLER TRANSLATION FILES
 MCU_ASM_FILES = \
-$(DIR_STARTUP)/$(MCU_STARTUP)
 
 
 ######################################
@@ -82,8 +87,6 @@ $(DIR_STARTUP)/$(MCU_STARTUP)
 
 # INCLUDE DIRECTORIES
 MCU_INCLUDE_PATHS = \
--I$(DIR_MCU) \
--I$(DIR_MCU)/Inc \
 -I$(DIR_MCU)/Inc/Legacy
 
 
@@ -93,4 +96,3 @@ MCU_INCLUDE_PATHS = \
 
 # MCU DEFINES
 MCU_DEFINES = \
--D$(MCU_DEFINE) \

@@ -81,11 +81,12 @@ It's possible to add different options to `make` command. Supported options are:
 - `clean_jlink`: Delete J-Link script files from `.jlink` folder.
 - `rtos_cfg`: Open the RTOS config file in CMSIS Config Wizard Java application.
 
-### Structure
+### Make structure
 
-- **Build file**: Entry make file. Contains build specific config(eg., disabled debug, different optimization). Located in `Builds` folder.
-- **Hardware file**: Make file with hardware configuration. Contains hardware-related files, defines etc.. Shared between all builds for same hardware. Located in `Hardware/{HW_name}` folder.
-- **Application file**: Make file with application configuration. Contains application-related files, defines etc.. Shared between all builds. Located in `Config` folder.
+- **Build**: Entry make file. Contains build specific config(eg., disabled debug, different optimization). Located in `Builds` folder.
+- **Hardware**: Make file with hardware configuration. Contains hardware-related files, defines etc.. Shared between all builds for same hardware. Located in `Hardware/{HW_name}` folder.
+- **MCU**: Make file with MCU configuration. Contains MCU-related files, defines etc.. Shared between hardware config with same MCU. Located in `MCU/{MCU_name}` folder.
+- **Application**: Make file with application configuration. Contains application-related files, defines etc.. Shared between all builds. Located in `Config` folder.
 - **Backend**: Make file with build process. Contains options for `make` command. Located in `Make` folder. Shared between all builds and does not contain application or hardware configuration.
 - **Config**: Make file with configuration for build process. Located in `Make` folder. Shared between all builds and does not contain application or hardware configuration.
 

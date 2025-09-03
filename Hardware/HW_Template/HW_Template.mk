@@ -1,7 +1,9 @@
 
 # HARDWARE MCU
-HW_MCU = MCU_NAME
+HW_MCU = STM32F103C8
 
+# HARDWARE MCU FULL PATH
+HW_MCU_MAKE = $(DIR_MCU)/$(HW_MCU).mk
 
 ######################################
 # HARDWARE-RELATED FILE LIST
@@ -23,7 +25,6 @@ HW_ASM_FILES = \
 
 # INCLUDE DIRECTORIES
 HW_INCLUDE_PATHS = \
--I$(DIR_HARDWARE) \
 
 
 ######################################
@@ -32,4 +33,3 @@ HW_INCLUDE_PATHS = \
 
 # HARDWARE DEFINES
 HW_DEFINES = \
--DHW_$(HW_NAME) \
